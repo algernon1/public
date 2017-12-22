@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        .gray {background:#ccc;}
+    </style>
+    <script src="../../common/js/vue.js"></script>
+    <script src="../../common/js/vue-resource.js"></script>
+    <script>
+        window.onload = function (){
+
+            // function a(){
+            //     console.log(arguments)
+            // }
+            // a(1,2,3)
+            new Vue({
+                el:"#app",
+                data:{
+                    searchName:"",
+                    proList:[],
+                    nowI:-1
+                    // ,
+                    // aaa:""
+                },
+                created:function(){
+                    //this.getList();
+                },
+                methods:{
+                    getList:function(e){
+                        var e = e||event;
+                        if(e.keyCode == 40 || e.keyCode == 38)return;
+                        if(e.keyCode == 13){
+                            this.searchName = this.findChild(oUl)[this.nowI].innerHTML;
+                            oInput.value = this.searchName;
+                            window.location.href="https://www.baidu.com/s?wd="+this.searchName
+                            document.getElementById("ul").style.display = "none";
+                        }
+                        this.$http("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+                            method:"jsonp",
+                            data:{
+                                wd:this.searchName
+                            },
+                            jsonp:"cb"
+                        }).then(res => {
+                            this.proList = res.data.s;
+                            console.log(res.data.s)
+                        })
+                    },
+                    // change:function(e){
+                    //     let oUl = document.getElementById("ul");
+                    //     let oInput = document.getElementById("input");
+                    //     oUl.style.display="block";
+                    //     this.getList();
+                    //     var e = e||event;
+                    //     // if(e.keyCode == 38 ){
+                    //     //     this.nowI--;
+                    //     //     if(this.nowI<=-1)this.nowI=this.findChild(oUl).length-1;
+                    //     //     //this.setBg(this.findChild(oUl));
+                    //     // }else if(e.keyCode == 40){
+                    //     //     this.nowI++;
+                    //     //     if(this.nowI>=this.findChild(oUl).length)this.nowI=0;
+                    //     //     //this.setBg(this.findChild(oUl));
+                    //     // }else 
+                    //     if(e.keyCode == 13){
+                    //         this.searchName = this.findChild(oUl)[this.nowI].innerHTML;
+                    //         oInput.value = this.searchName;
+                    //         window.location.href="https://www.baidu.com/s?wd="+this.searchName
+                    //         document.getElementById("ul").style.display = "none";
+                    //     }
+
+                    // },
+                    changeUp:function(){
+                        this.nowI--;
+                        if(this.nowI<=-1)this.nowI = this.proList.length-1;
+                        this.searchName = this.proList[this.nowI];
+
+                    },
+                    changeDown:function(){
+                        this.nowI++;
+                        if(this.nowI>=this.proList.length)this.nowI = 0;
+                        this.searchName = this.proList[this.nowI];
+                    },
+                    findChild:function(oUl){
+
+                        var oArr = [];
+                        for(var i=0;i<oUl.childNodes.length;i++){
+                            if(oUl.childNodes[i].nodeName != "#text"){
+                                oArr.push(oUl.childNodes[i])
+                            }
+                        }
+                        return oArr;
+                    }
+                    // ,
+                    // setBg:function(oArr){
+                    //     for(var i=0;i<oArr.length;i++){
+                    //         oArr[i].style.backgroundColor = "white";
+                    //     }
+                    //     oArr[this.nowI].style.backgroundColor = "#ccc";
+                    // }
+                    ,
+                    text:function(){
+                        var a = document.getElementById("a");
+                        this.aaa = a.value;
+
+                    }
+                }
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="模拟搜索框" v-model="searchName" @keyup="getList"  id="input" @keydown.up="changeUp()" @keydown.down="changeDown()"><!--getList(e)这种写法不行，vue2不支持这种写法   -->
+        <ul id="ul">
+            <li v-for="item,$index in proList" v-bind:class="{gray:$index==nowI}">{{item}}</li>
+        </ul>
+        <!-- <input type="text" v-model="aaa" v-on:keyup="text()" id="a">
+        <div>{{aaa}}</div> -->
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
