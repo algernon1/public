@@ -1,0 +1,12 @@
+
+/*上传*/
+.comUpload {border:1px dashed #ccc;width:79px !important;height:59px !important;text-align:center !important;border-radius:5px;cursor:pointer;vertical-align:middle;overflow:hidden;position:relative;padding:0  !important;margin:0 !important;font-size:12px !important;color:#ccc !important;display:table-cell !important;}
+.comUpload img.comShowImg {max-width:100%;max-height:100%;vertical-align:middle;position:relative;z-index:1;}
+.comUpload i {background: url('../images/comUpload.png') no-repeat 0 0 !important;width: 16px !important;height: 16px !important;display:inline-block;vertical-align:middle;position:absolute;left:32px;top:15px;z-index:0;}
+.comUpload b {vertical-align:middle;display: inline-block;width:100%;height:20px;line-height:20px;font-weight:normal;position:absolute;left:0;top:30px;z-index:0;}
+
+.comUpload .uploadBtn {width:79px;height:59px;position:absolute;left:0;top:0;}
+.comUploadAfter {}
+.comUploadAfter .imgDelete{background: url('../images/comUpload.png') no-repeat -44px 0;width: 15px;height: 16px;display:block;position:absolute;right:0;top:0;z-index:2000000001;}
+.comUploadAfter i{display:none;}
+.comUploadAfter b{display:none;}

@@ -1,0 +1,177 @@
+
+<html>
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<link type="text/css" href="css/table.css" rel="stylesheet">
+		<script type="text/javascript" src="script/table.js"></script> 
+		<script type="text/javascript" src="script/public.js"></script> 
+		<script type="text/javascript" src="script/jquery-1.7.1.js"></script> 
+		<script type="text/javascript" src="script/jquery.page.js"></script> 
+	</head>
+   <script>
+		
+
+		function clsTable()
+		{
+			this.oTable		= null;
+			this.jsonData	= null;
+			this.init		= clsTable$init;
+			this.parseData	= clsTable$parseData;
+			this.cssTable	= clsTable$cssTable;
+			this.refreshData= clsTable$refreshData;
+		}
+
+		function clsTable$init()
+		{
+			if(this.oTable != null)
+			{
+				var templateRow = this.oTable.rows[this.oTable.rows.length-1];
+				for (var nI=0;nI<this.jsonData.length ; nI++)
+				{
+					
+					var oCloneRow	= templateRow.cloneNode(true);
+					oCloneRow.setAttribute("rowType","dataRow");
+					var jsonDataRow = this.jsonData[nI].data;
+					oCloneRow		= this.parseData(jsonDataRow,oCloneRow);
+					oCloneRow.style.display = "";
+					templateRow.parentNode.insertBefore(oCloneRow,templateRow);
+				}
+				this.cssTable();
+			}
+			return false;
+		}
+
+		function clsTable$parseData(jsonDataRow,oCloneRow)
+		{
+			for(var nI=0; nI<jsonDataRow.length; nI++)
+			{
+				var objTarget = $subNode(oCloneRow, jsonDataRow[nI].id);
+				if(objTarget != null && objTarget.tagName != null)
+				{
+					switch(objTarget.tagName.toUpperCase())
+					{
+						case "TD":
+							objTarget.innerHTML = jsonDataRow[nI].value;
+							break;
+						case "A":
+							objTarget.innerHTML = jsonDataRow[nI].value;
+							objTarget.href		= jsonDataRow[nI].href;
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			return oCloneRow;
+		}
+
+		function clsTable$cssTable()
+		{
+			for(var nI=1; nI<this.oTable.rows.length-1; nI++)
+			{
+				
+				if(nI % 2 == 0)
+				{
+					var oRow = this.oTable.rows[nI];
+					oRow.className = "oddTr";
+				}
+					
+				
+			}
+		}
+
+		function clsTable$refreshData()
+		{
+			for(var nI=this.oTable.rows.length-1; nI>=0; nI--)
+			{
+				var oRow = this.oTable.rows[nI];
+				if(oRow.getAttribute("rowType") == "dataRow")
+					this.oTable.deleteRow(nI);
+			}
+			this.init();
+		}
+		
+		//初始化表格
+		function initTable()
+		{
+			var returnResult = '[{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机","href":"www.sina.com.cn"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]}]';
+			var obj		= new clsTable();
+			obj.oTable	= document.getElementById("tblTest");
+			obj.jsonData= JSON.parse(returnResult);
+			obj.init();
+			//分页插件
+			$(".tcdPageCode").createPage({
+				pageCount:40,
+				current:1,
+				backFn:function(p){
+					onRefresh();
+					//console.log(p);
+				}
+			});
+		}
+		
+
+		//数据变化时刷新表格数据。
+		function onRefresh()
+		{
+			var returnResult = '[{"data":[{"id":"matType","value":"油烟机1"},{"id":"comment","value":"1230次"},{"id":"share","value":"371次"},{"id":"like","value":"822次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机BB"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]},{"data":[{"id":"matType","value":"油烟机"},{"id":"comment","value":"230次"},{"id":"share","value":"37次"},{"id":"like","value":"82次"}]}]';
+			var obj		= new clsTable();
+			obj.oTable	= document.getElementById("tblTest");
+			obj.jsonData= JSON.parse(returnResult);
+			obj.refreshData();
+		}
+
+		var smsTypeDesc = {"4":"回访短信","3":"邮件短信","aa":"测试短信"};  
+        function EnumaKey(){  
+            for(var key in smsTypeDesc){  
+                alert(key);  
+            }  
+        }  
+		EnumaKey();
+   </script>
+	<body onload="initTable();">
+			<table id="tblBtnContent" width="100%" border="0" cellspacing="0" cellpadding="0" background="../../images/table/index_20.jpg" height="27">
+				<tr>
+					<td>
+						<div class="button wave" style="width:50px;cursor:hand;" onclick="onInsert();">新建</div>
+					</td>
+					<td>
+						<div class="button delete" style="width:50px;cursor:hand;" onclick="onDelete();">删除</div>
+					</td>
+					<td>
+						<div class="button spark" style="width:50px;cursor:hand;" onclick="onRefresh();">刷新</div>
+					</td>
+					<td>
+						<div href="" class="button flower" style="width:150px;cursor:hand;" onclick="onCopyToProduct();">复制结果到其他产品</div>
+					</td>
+					<td width="100%">
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+			<table id="tblTest" style="width:500px;" cellpadding=0 cellspacing=0 class="tableRule">
+				<tr rowType="titleRow">
+					<th>品类</th>
+					<th>评论</th>
+					<th>分享</th>
+					<th>点赞</th>
+				</tr>
+				<tr rowType="templateRow" style="display:none;">
+					<td id="matType">1</td>
+					<td id="comment">2</td>
+					<td id="share">3</td>
+					<td><a id="like" href="">4</a></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<div class="tcdPageCode"></div>
+					</td>
+					<td style="font-size:12px;">
+						共40页，&nbsp;跳至第&nbsp;<input type='text' id='currentTxt' value='' style='width:30px' id='jumpPage' />页 <input type='button' value='确定' style='width:50px' onclick='jumpPage()' />
+					</td>
+				</tr>
+			</table>
+	</body>
+</html>

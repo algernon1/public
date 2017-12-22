@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            首页
+        </title>
+        <link rel="stylesheet" href="../../common/css/base.css" />
+        <link rel="stylesheet" href="css/ajaxupload.css" />
+        <script src="../../common/js/jquery.js" type="text/javascript"></script>
+        <script src="js/ajaxupload.js" type="text/javascript"></script>
+
+    <style>
+
+    </style>
+        <script>
+        $(function (){
+
+            var cloneAptitudeDiv=document.getElementsByTagName('body')[0];
+            new AjaxUpload($('#chooseBtn'), {
+                    action: 'XXXXX.action', 
+                    name: 'file',
+                    parentObj:cloneAptitudeDiv,
+                    responseType: 'json',
+                    onSubmit : function(file , ext){
+                        if (ext && /^(jpg|png|bmp)$/.test(ext.toLowerCase())){
+                            this.setData({
+                                'picName': file
+                            });
+                        } else {
+                            alert("请上传格式为 jpg|png|bmp 的图片！");
+                            return false;               
+                        }
+                    },
+                    onComplete : function(file,response){
+                        if(response.status == "1") {
+                            //得到返回图片url并赋值到image上
+                            var uploadImg = $subNode(file,"uploadImg");
+                            uploadImg.setAttribute("src","");
+                        }
+                        else
+                        {
+                            alert("上传失败!");
+                            return;
+                            
+                        }
+                    }       
+                });
+
+
+            
+
+            $('.comUploadAfter .imgDelete').click(function (event){
+                alert(1)
+            })
+        });
+        </script>
+
+    </head>
+    <body>
+                <div class="comUpload comUploadAfter" id="comUpload">
+                    <a href="javascript:;" class="imgDelete"></a>
+                    <i></i><b>上传广告图</b>
+                    <img src="images/textImg.png" alt="" class="comShowImg">
+                    <p id="chooseBtn" class="uploadBtn"></p>
+                </div><span style="position:relative;top:-20px;left:100px">afdasfda</span>
+    </body>
+
+</html>

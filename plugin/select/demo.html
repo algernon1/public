@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link type="text/css" href="../../common/css/base.css" rel="stylesheet">
+<link rel="stylesheet" href="css/chosen.min.css"/>
+<script type="text/javascript" src="../../common/js/jquery.js"></script> 
+<script src="js/chosen.jquery.js"></script>
+<script type="text/javascript" src="../../common/js/global.js"></script>
+<script>
+	/*
+	通过参数传递的选项
+	以下参数在实例化的时候通过参数设置。
+
+	$('.my_select_box').chosen({
+	  disable_search_threshold: 10,
+	  no_results_text: 'Oops, nothing found!',
+	  width: '95%'
+	});
+	选项	默认值	描述
+	allow_single_deselect	false	设置为 true 时非必选的单选框会显示清除选中项图标
+	disable_search	false	设置为 true 隐藏单选框的搜索框
+	disable_search_threshold	0	少于 n 项时隐藏搜索框
+	enable_split_word_search	true	是否开启分词搜索，默认开启
+	inherit_select_classes	false	是否继承 select 元素的 class，如果设为 true，Chosen 将把 select 的 class 添加到容器上
+	max_selected_options	Infinity	最多选择项数，达到最大限制时会触发 chosen:maxselected 事件
+	no_results_text	"No results match"	没有搜索到匹配项时显示的文字
+	placeholder_text_multiple	"Select Some Options"	多选框没有选中项时显示的占位文字
+	placeholder_text_single	"Select an Option"	单选框没有选中项时显示的占位文字
+	search_contains	false	搜素包含项，默认从第一个字符开始匹配
+	single_backstroke_delete	true	多选框中使用退格键删除选中项目，如果设为 false，第一次按 delete/backspace 会高亮最好一个选中项目，再按会删除该项
+	width	Original select width.	Chosen 生成的选择框宽度，默认为和原 select 宽度保持一致
+	display_disabled_options	true	是否显示禁止选择的项目
+	display_selected_options	true	多选框是否在下拉列表中显示已经选中的项
+	属性
+	可以通过在 <select> 上设置属性传递给 Chosen。
+
+	<select class="my_select_box" data-placeholder="Select Your Options">
+	  <option value="1">Option 1</option>
+	  <option value="2" selected>Option 2</option>
+	  <option value="3" disabled>Option 3</option>
+	</select>
+	属性	描述
+	data-placeholder	占位符文字 
+	注意： 改属性会覆盖 placeholder_text_multiple 或 placeholder_text_single 选项。
+	multiple	有此属性的 select 会渲染成可以多选的 Chosen 选框
+	selected, disabled	设置选中、禁止状态，Chosen 会读取这些属性
+	触发事件
+	Chosen 会在源 <select> 元素上触发事件。
+
+	$('.my_select_box').on('change', function(e, params) {
+	  do_something(e, params);
+	});
+	事件	描述
+	change	Chosen 触发标准的 change 事件，同时会传递 selected or deselected 参数， 方便用户获取改变的选项
+	chosen:ready	Chosen 实例化完成时触发
+	chosen:maxselected	超过 max_selected_options 设置时触发
+	chosen:showing_dropdown	Chosen 下拉选框打开完成时触发
+	chosen:hiding_dropdown	Chosen 下拉选框关闭完成时触发
+	chosen:no_results	搜索没有匹配项时触发
+	注意：所有 Chosen 自定义事件 都包含 Chosen 实例 chosen 对象作为参数。
+
+	Chosen 监听的事件
+	通过在 <select> 元素上触发特定事件可以调用 Chosen 的监听函数。
+
+	// tell Chosen that a select has changed
+	$('.my_select_box').trigger('chosen:updated');
+	事件	描述
+	chosen:updated	通过 JS 改变 select 元素选项时应该触发此事件，以更新 Chosen 生成的选框
+	chosen:activate	相当于 HTML focus 事件
+	chosen:open	激活 Chosen 并显示搜索结果
+	chosen:close	关闭 Chosen 并隐藏搜索结果
+	 
+	*/
+
+
+</script>
+</head>
+<body>
+<!-- 没有ajax的固定数据美化-->
+<select comType="singleSelect" style="width:200px">
+	<option value="">1111</option>
+</select>
+<!-- 有ajax的美化-->
+<select comType="singleSelect" reqUrl="js/data.json" reqData="{}" reqType="post" style="width:201px">
+	<option value="">2222</option>
+</select>
+</body>
+</html>

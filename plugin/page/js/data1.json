@@ -1,0 +1,86 @@
+{
+    "allCount":2,
+    "resultData": 
+    [
+    	{ "data": 
+    		[
+    			{ "id": "matType", "value": "油烟机" },
+    			{ "id": "comment", "value": "230次" }, 
+    			{ "id": "share", "value": "37次" }, 
+    			{ "id": "like", "value": "82次" }
+    		] 
+    	}, 
+    	{ "data": 
+    		[
+    			{ "id": "matType", "value": "油烟机" },
+    			{ "id": "comment", "value": "231次" }, 
+    			{ "id": "share", "value": "37次" }, 
+    			{ "id": "like", "value": "82次" }
+    		] 
+    	}, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "232次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "233次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "234次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "235次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "236次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "237次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "238次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }, 
+        { "data": 
+            [
+                { "id": "matType", "value": "油烟机" },
+                { "id": "comment", "value": "239次" }, 
+                { "id": "share", "value": "37次" }, 
+                { "id": "like", "value": "82次" }
+            ] 
+        }
+    ]
+}

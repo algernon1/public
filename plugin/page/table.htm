@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" href="../../common/css/base.css" rel="stylesheet">
+		<link type="text/css" href="css/table_blue.css" rel="stylesheet">
+		<script type="text/javascript" src="../../common/js/jquery.js"></script> 
+		<script type="text/javascript" src="js/jquery.page.js"></script>
+		<script type="text/javascript" src="../../common/js/global.js"></script>
+		<style>
+			.listBox {width:100%;}
+			.listBox .pageList {
+				width:100%;
+			}
+			.listBox .pageList li {
+				float:left;
+				width:25%;
+				font:12px/26px;
+				height:26px;
+				text-align:center;
+				border-bottom:1px solid #ccc;
+			}
+		</style> 
+	</head>
+	<body>
+		<div class="listBox" comType="singleTable" reqUrl="js/data1.json" reqData="{'page':1}" reqType="post">
+			<ul class="pageList">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="tcdPageCode"></div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+{
+    "allCount":2,
+    "resultData": 
+    [
+    	{ "data": 
+    		[
+    			{ "id": "matType", "value": "油烟机" },
+    			{ "id": "comment", "value": "240次" }, 
+    			{ "id": "share", "value": "37次" }, 
+    			{ "id": "like", "value": "82次" }
+    		] 
+    	}, 
+    	{ "data": 
+    		[
+    			{ "id": "matType", "value": "油烟机" },
+    			{ "id": "comment", "value": "241次" }, 
+    			{ "id": "share", "value": "37次" }, 
+    			{ "id": "like", "value": "82次" }
+    		] 
+    	}
+    ]
+}

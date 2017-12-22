@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link type="text/css" href="../../common/css/base.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/tip-yellowsimple/tip-yellowsimple.css">
+	<script type="text/javascript" src="../../common/js/jquery.js"></script> 
+	<script type="text/javascript" src="js/jquery.poshytip.min.js"></script> 
+	<script type="text/javascript" src="js/validate_class.js"></script>
+	<script>
+		window.onload = function() {
+			$(".btn").click(function() {
+				checkAll(document.getElementById("form"))
+			})
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<form action="" id="form">
+			<select name="" id="">
+				<option value="">111</option>
+				<option value="">111</option>
+				<option value="">111</option>
+			</select>
+			
+			
+			<p>
+				日期格式:<input class="required speyyyyMMddHHmmss" type="text">
+			</p>
+
+			<p>
+				密码:<input class="required" type="password" id="a">
+			</p>
+			<p>
+				确认密码:<input class="required samePW" type="password" v_pw="a" v_confirmPw="b" id="b">
+			</p>
+			
+			<p>
+				<a href="javascript:;" class="btn">提交</a>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
